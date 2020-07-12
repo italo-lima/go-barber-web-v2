@@ -14,7 +14,7 @@ import { Container, Error } from './styles';
 // Extende todas as propriedades do input html e torna o name obrigatório a ser passado
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  icon?: React.ComponentType<IconBaseProps>; // recebe um component como propriedade
+  icon?: React.ComponentType<IconBaseProps>; // ComponentType permite receber um component como propriedade
 }
 
 const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
@@ -48,8 +48,8 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
       {Icon && <Icon size={20} />}
       <input
         // Efeito de foco ao clicar no input
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
+        onFocus={handleInputFocus} // recebe o foco
+        onBlur={handleInputBlur} // perde o foco
         // Utilizado para o unform
         defaultValue={defaultValue}
         ref={inputRef}

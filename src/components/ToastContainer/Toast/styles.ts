@@ -1,5 +1,5 @@
-import styled, {css} from "styled-components"
-import { animated } from "react-spring"
+import styled, { css } from 'styled-components';
+import { animated } from 'react-spring';
 
 const toastTypeVariations = {
   info: css`
@@ -8,16 +8,17 @@ const toastTypeVariations = {
   `,
   success: css`
     background: #e6fffa;
-    color: #2e656a;`,
+    color: #2e656a;
+  `,
   error: css`
     background: #fddded;
     color: #e53030;
   `,
-}
+};
 
 interface ContainerProps {
-  type?: 'success' | 'error' | "info";
-  hasDescription: boolean;
+  type?: 'success' | 'error' | 'info';
+  hasDescription: number;
 }
 
 export const Container = styled(animated.div)<ContainerProps>`
@@ -25,14 +26,14 @@ export const Container = styled(animated.div)<ContainerProps>`
   position: relative;
   padding: 15px 30px 15px 15px;
   border-radius: 10px;
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   display: flex;
 
   & + div {
     margin-top: 10px;
   }
 
-  ${(props) => toastTypeVariations[props.type || "info"]}
+  ${props => toastTypeVariations[props.type || 'info']}
 
   > svg {
     margin: 5px 15px 0 0;
@@ -59,12 +60,13 @@ export const Container = styled(animated.div)<ContainerProps>`
     color: inherit;
   }
 
-  ${(props) => !props.hasDescription && css`
-    align-items: center;
+  ${props =>
+    !props.hasDescription &&
+    css`
+      align-items: center;
 
-    svg {
-      margin-top: 0;
-    }
-
-  `}
+      svg {
+        margin-top: 0;
+      }
+    `}
 `;

@@ -2,11 +2,14 @@ import React, { ButtonHTMLAttributes } from 'react';
 
 import { Container } from './styles';
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+// semelhante a interface, mas como não sobrescreve ou cria propriedades padrão, usa type
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  loading?: boolean;
+};
 
-const Button: React.FC<ButtonProps> = ({ children, ...rest }) => (
-  <Container type="submit" {...rest}>
-    {children}
+const Button: React.FC<ButtonProps> = ({ children, loading, ...rest }) => (
+  <Container type="button" {...rest}>
+    {loading ? 'Carregando...' : children}
   </Container>
 );
 
